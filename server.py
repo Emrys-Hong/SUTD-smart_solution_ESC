@@ -9,7 +9,7 @@ from flask import jsonify
 WORD = re.compile(r'\w+')
 
 questions = pd.read_csv('stackoverflow_25000.csv', encoding='latin-1')
-
+questions = questions[:10000, :]
 # questions = questions.ix[0:10000, 1]
 # # questions.to_csv("Questions_100000.csv")
 print("sucessfully load the data")
