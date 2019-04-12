@@ -27,8 +27,9 @@ def smart_solution(question):
         arr = np.array(indexes)
     replace = arr.argsort()[-5:][::-1]
     toReturn = {}
-    for i in range(5):
-        toReturn = {i: {'title': questions['Title'][replace[i]], 'questions': questions['questions'][replace[i]], 'answers':questions['answers'][replace[i]]} }
+    mylist = ['first', 'second', 'third', 'fourth', 'fifth']
+    for i, o in enumerate(mylist):
+        toReturn[o] = {'title': questions['Title'][replace[i]], 'questions': questions['questions'][replace[i]], 'answers':questions['answers'][replace[i]]}
     return jsonify(toReturn)
 
 def smart_suggestion(list1, string2):
