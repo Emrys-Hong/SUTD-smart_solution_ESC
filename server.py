@@ -29,12 +29,17 @@ def smart_solution(question):
     toReturn = {}
     mylist = ['first', 'second', 'third', 'fourth', 'fifth']
     for i, o in enumerate(mylist):
-        toReturn[o] = {'title': questions['Title'][replace[i]], 'questions': questions['questions'][replace[i]], 'answers':questions['answers'][replace[i]]}
+        toReturn[o] = {'title': questions['Title'][replace[i]], 'id': str(replace[i])}
     return jsonify(toReturn)
 
 def smart_suggestion(list1, string2):
     return len(set(list1)&set(string2.split()))
 
+@app.route('/get_detail/<id>')
+def get_detail(id):
+    id = int(id)
+    toReturn = {'question': questions['questions'][id], 'answer': questions['answers'][id]}
+    return jsonify(toReturn)
 
 if __name__ == "__main__" : 
     app.run()
