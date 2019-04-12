@@ -9,7 +9,7 @@ from flask import jsonify
 WORD = re.compile(r'\w+')
 
 questions = pd.read_csv('stackoverflow_25000.csv', encoding='latin-1')
-questions = questions.ix[:10000, :]
+questions = questions.ix[:1000, :]
 # questions = questions.ix[0:10000, 1]
 # # questions.to_csv("Questions_100000.csv")
 print("sucessfully load the data")
@@ -26,13 +26,9 @@ def smart_solution(question):
         indexes.append(c)
         arr = np.array(indexes)
     replace = arr.argsort()[-5:][::-1]
-
-    title_string = '|'.join(questions['Title'][replace])
-    questions_string = '|'.join(questions['questions'][replace])
-    answers_string = '|'.join(questions['answers'][replace])
-
-    toReturn = {'TITLE' : title_string , 'QUESTIONS': questions_string , 'ANSWERS' : answers_string}
-    
+    toReturn = {}
+    for i in range(5):
+        toReturn = {i: {'title': questions['Title'][replace[i]], 'questions': questions['questions'][replace[i]], 'answers':questions['answers'][replace[i]]} }
     return jsonify(toReturn)
 
 def smart_suggestion(list1, string2):
