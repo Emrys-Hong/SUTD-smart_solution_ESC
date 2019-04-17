@@ -19,7 +19,7 @@ app = Flask(__name__)
 @app.route('/smart_solution/<question>')
 def smart_solution(question):
 
-    search_word = question.split()
+    search_word = question.split('-')
     indexes = []
     for t in questions['Title']:
         c = smart_suggestion(search_word, t)
