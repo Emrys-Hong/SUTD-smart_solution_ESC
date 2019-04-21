@@ -4,7 +4,7 @@ import re, math
 from collections import Counter
 import numpy as np
 from flask import jsonify
-
+from flask import render_template
 
 WORD = re.compile(r'\w+')
 
