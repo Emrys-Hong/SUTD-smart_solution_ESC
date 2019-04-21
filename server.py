@@ -41,6 +41,10 @@ def get_detail(id):
     toReturn = {'question': questions['questions'][id], 'answer': questions['answers'][id]}
     return jsonify(toReturn)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 if __name__ == "__main__" : 
     app.run()
 
