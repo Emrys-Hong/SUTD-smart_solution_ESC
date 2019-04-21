@@ -45,7 +45,7 @@ def get_detail(id):
 def index():
     return render_template('index.html')
 
-@mod.route("/robots.txt")
+@app.route("/robots.txt")
 def robots_txt():
     Disallow = lambda string: 'Disallow: {0}'.format(string)
     return Response("User-agent: *\n{0}\n".format("\n".join([
